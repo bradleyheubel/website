@@ -1,16 +1,9 @@
-/**
- * Layout component that queries for data
- * with Gatsby's useStaticQuery component
- *
- * See: https://www.gatsbyjs.com/docs/use-static-query/
- */
-
-import React from "react"
+/** @jsx jsx */
+import { Styled, jsx, Link } from "theme-ui"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
 import Header from "./header"
-import "./global.css"
 
 const Layout = ({ children }) => {
   const data = useStaticQuery(graphql`
@@ -24,37 +17,41 @@ const Layout = ({ children }) => {
   `)
 
   return (
-    <div
-    style={{
-      backgroundColor: 'var(--bg)',
-      color: 'var(--textNormal)',
-      transition: 'color 0.2s ease-out, background 0.2s ease-out',
-    }}
-    >
+    <Styled.root>
       <Header siteTitle={data.site.siteMetadata?.title || `Title`} />
       <div
-        style={{
+        sx={{
           margin: `0 auto`,
           maxWidth: 960,
           textAlign: `center`,
           padding: `0 1.0875rem 1.45rem`,
         }}
       >
-        <main>{children}</main>
-        <footer style={{
+        <main
+          sx={{
+            fontFamily: "body",
+            fontWeight: "body",
+            color: "text",
+          }}
+        >
+          {children}
+        </main>
+
+        <footer sx={{
           marginTop: `2rem`,
-          color: `grey`
+          color: `text`,
+          fontSize: 10,
         }}>
-          Built with
+          Built with <Link href="https://www.gatsbyjs.com">Gatsby</Link>
           {` `}
-          <a href="https://www.gatsbyjs.com">Gatsby</a>
+          | Styled using <a href="https://theme-ui.com/">Theme-UI</a>
           {` `}
           | Served by <a href="https://www.netlify.com">Netlify</a> 
           <br/>
           Bradley Heubel {new Date().getFullYear()}
         </footer>
       </div>
-    </div>
+    </Styled.root>
   )
 }
 
