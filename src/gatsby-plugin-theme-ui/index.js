@@ -1,6 +1,6 @@
 export default {
     useCustomProperties: true,
-    initialColorMode: "default",
+    initialColorMode: "light",
     colors: {
         text: '#000',
         background: '#fff',
@@ -14,6 +14,13 @@ export default {
                 primary: '#0cf',
                 secondary: '#09c',
                 muted: '#111',
+            },
+            deep: {
+                text: '#fff',
+                background: '#222639',
+                primary: '#BB99FF',
+                secondary: '#EE99FF',
+                muted: '#000',
             }
         }
     },
