@@ -1,5 +1,5 @@
 import React from "react"
-import { useStaticQuery, graphql } from "gatsby"
+import { StaticQuery, graphql } from "gatsby"
 import Img from "gatsby-image"
 
 /*
@@ -13,7 +13,38 @@ import Img from "gatsby-image"
  * - `useStaticQuery`: https://www.gatsbyjs.com/docs/use-static-query/
  */
 
-const Image = () => {
+class Image extends React.Component{
+  render(){
+    return(
+      <StaticQuery
+        query={graphql`
+          query {
+            allImageSharp {
+              edges {
+                node {
+                  fluid(maxWidth: 500) {
+                    ...GatsbyImageSharpFluid
+                    originalName
+                  }
+                }
+              }
+            }
+          }
+        `}
+        render={data => {
+          const image = data.allImageSharp.edges.find(
+            edge => edge.node.fluid.originalName === this.props.imgName
+          )
+          if (!image) {
+            return null
+          }
+          return <Img style={{...this.props.imgStyle}} fluid={image.node.fluid} />
+        }}
+      />
+    )
+  }
+}
+/*const Image = () => {
   const data = useStaticQuery(graphql`
     query {
       placeholderImage: file(relativePath: { eq: "gatsby-astronaut.png" }) {
@@ -31,6 +62,6 @@ const Image = () => {
   }
 
   return <Img fluid={data.placeholderImage.childImageSharp.fluid} />
-}
+}*/
 
 export default Image
