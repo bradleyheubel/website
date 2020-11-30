@@ -10,8 +10,8 @@ export default {
         modes: {
             dark: {
                 text: '#fff',
-                background: '#000',
-                primary: '#0cf',
+                background: '#121212',
+                primary: '#243b53',
                 secondary: '#09c',
                 muted: '#111',
             },
@@ -40,4 +40,9 @@ export default {
     },
     fontSizes: [12, 14, 16, 20, 24, 32, 48, 64, 72],
     space: [0, 4, 8, 16, 32, 64, 128, 256, 512],
+    styles: {
+        a: {
+            color: "text"
+        }
+    }
 }

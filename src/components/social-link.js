@@ -4,13 +4,24 @@ import React from "react"
 import PropTypes from "prop-types"
 import { useStaticQuery, graphql } from "gatsby"
 
-import Image from './image'
+import { FaLinkedin } from "@react-icons/all-files/fa/FaLinkedin";
+import { FaGithub } from "@react-icons/all-files/fa/FaGithub";
 
 class SocialLink extends React.Component{
     render(){
+        let icon
+
+        if (this.props.icon === "linkedin"){
+            icon = <FaLinkedin sx={{...this.props.iconStyle}}/>
+        } else if (this.props.icon === "github"){
+            icon = <FaGithub sx={{...this.props.iconStyle}}/>
+        }
+
+        console.log(icon)
+
         return (
-            <Link href={this.props.socialLink}>
-                <Image imgStyle={{...this.props.socialStyle}} imgName={this.props.imgName}/>
+            <Link style={{padding: "2px"}} href={this.props.socialLink} target="_blank">
+                {icon}
             </Link>
         )
     }

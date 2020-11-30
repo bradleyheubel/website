@@ -42,11 +42,11 @@ const Layout = ({ children }) => {
           color: `text`,
           fontSize: 10,
         }}>
-          Built with <Link href="https://www.gatsbyjs.com">Gatsby</Link>
+          Built with <Link href="https://www.gatsbyjs.com" target="_blank">Gatsby</Link>
           {` `}
-          | Styled using <a href="https://theme-ui.com/">Theme-UI</a>
+          | Styled using <Link href="https://theme-ui.com/" target="_blank">Theme-UI</Link>
           {` `}
-          | Served by <a href="https://www.netlify.com">Netlify</a> 
+          | Served by <Link href="https://www.netlify.com" target="_blank">Netlify</Link> 
           <br/>
           Bradley Heubel {new Date().getFullYear()}
         </footer>
